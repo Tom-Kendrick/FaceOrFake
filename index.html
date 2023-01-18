@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Images</title>
+    <style>
+      /* Style for the images */
+      img {
+        width: 48%; /* half of the screen width */
+        height: auto; /* automatically adjust height */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img id="real-img" alt="Random image from real endpoint" />
+      <img id="fake-img" alt="Random image from fake endpoint" />
+    </div>
+    <script>
+      // Get the image element
+      var realImg = document.getElementById("real-img");
+      var fakeImg = document.getElementById("fake-img");
+
+      //Function to get the random real image
+      function getRealImage() {
+        var randomNumber = Math.floor(Math.random() * 99999);
+        var url = "https://www.whichfaceisreal.com/realimages/" + randomNumber + ".jpeg";
+        var request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.responseType = 'blob';
+        request.onreadystatechange = function() {
+          if (request.readyState === 4) {
+            if (request.status === 200) {
+              var url = URL.createObjectURL(request.response);
+              realImg.src = url;
+            }
+          }
+        }
+        request.send();
+      }
+
+      //Function to get the fake image
+      function getFakeImage() {
+        var url = "https://thispersondoesnotexist.com/image";
+        var request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.responseType = 'blob';
+        request.onreadystatechange = function() {
+          if (request.readyState === 4) {
+            if (request.status === 200) {
+              var url = URL.createObjectURL(request.response);
+              fakeImg.src = url;
+            }
+          }
+        }
+        request.send();
+      }
+
+      //Call the functions
+      getRealImage();
+      getFakeImage();
+    </script>
+  </body>
+</html>
