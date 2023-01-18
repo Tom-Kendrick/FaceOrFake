@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Random Images</title>
+    <title>Real or Fake</title>
     <style>
       /* Style for the images */
       img {
         width: 48%; /* half of the screen width */
         height: auto; /* automatically adjust height */
+      }
+      /* Style for the score */
+      #score {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      /* Style for the correct answer */
+      #correct {
+        background-color: green;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        display: none;
+      }
+      /* Style for the wrong answer */
+      #wrong {
+        background-color: red;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        display: none;
       }
     </style>
   </head>
@@ -15,17 +38,27 @@
       <img id="real-img" alt="Random image from real endpoint" />
       <img id="fake-img" alt="Random image from fake endpoint" />
     </div>
+    <div id="score">Score: 0</div>
+    <div id="correct">Correct!</div>
+    <div id="wrong">Wrong!</div>
     <script>
-      // Get the image element
+      // Get the image elements
       var realImg = document.getElementById("real-img");
       var fakeImg = document.getElementById("fake-img");
-
-      //Function to get the random real image
-      function getRealImage() {
+      // Get the score element
+      var score = document.getElementById("score");
+      var scoreCounter = 0;
+      // Get the correct answer element
+      var correct = document.getElementById("correct");
+      // Get the wrong answer element
+      var wrong = document.getElementById("wrong");
+      
+      //Function to get the random real and fake images
+      function getImages() {
         var randomNumber = Math.floor(Math.random() * 99999);
-        var url = "https://www.whichfaceisreal.com/realimages/" + randomNumber + ".jpeg";
+        var realUrl = "https://www.whichfaceisreal.com/realimages/" + randomNumber + ".jpeg";
         var request = new XMLHttpRequest();
-        request.open('GET', url);
+        request.open('GET', realUrl);
         request.responseType = 'blob';
         request.onreadystatechange = function() {
           if (request.readyState === 4) {
@@ -36,28 +69,68 @@
           }
         }
         request.send();
-      }
-
-      //Function to get the fake image
-      function getFakeImage() {
-        var url = "https://thispersondoesnotexist.com/image";
-        var request = new XMLHttpRequest();
-        request.open('GET', url);
-        request.responseType = 'blob';
-        request.onreadystatechange = function() {
-          if (request.readyState === 4) {
-            if (request.status === 200) {
-              var url = URL.createObjectURL(request.response);
+        
+        var fakeUrl = "https://thispersondoesnotexist.com/image";
+        var request2 = new XMLHttpRequest();
+        request2.open('GET', fakeUrl);
+        request2.responseType = 'blob';
+        request2.onreadystatechange = function() {
+          if (request2.readyState === 4) {
+            if (request2.status === 200) {
+              var url = URL.createObjectURL(request2.response);
               fakeImg.src = url;
             }
           }
         }
-        request.send();
+        request2.send();
       }
-
+      
+      //Variable to store the real image side
+      var realSide;
+      
+      //Function to randomly decide which image is the real one
+      function decideRealSide() {
+        var randomNum = Math.random();
+        if (randomNum >= 0.5) {
+          realSide = "left";
+        } else {
+          realSide = "right";
+        }
+      }
+      
       //Call the functions
-      getRealImage();
-      getFakeImage();
+      getImages();
+      decideRealSide();
+      
+      //Event listener for arrow key presses
+      document.addEventListener("keydown", function(event) {
+        if (event.code === "ArrowLeft" && realSide === "left") {
+          scoreCounter++;
+          score.innerHTML = "Score: " + scoreCounter;
+          correct.style.display = "block";
+          setTimeout(function() {
+            correct.style.display = "none";
+          }, 1000);
+          getImages();
+          decideRealSide();
+        } else if (event.code === "ArrowRight" && realSide === "right") {
+          scoreCounter++;
+          score.innerHTML = "Score: " + scoreCounter;
+          correct.style.display = "block";
+          setTimeout(function() {
+            correct.style.display = "none";
+          }, 1000);
+          getImages();
+          decideRealSide();
+        } else {
+          wrong.style.display = "block";
+          setTimeout(function() {
+            wrong.style.display = "none";
+          }, 1000);
+          getImages();
+          decideRealSide();
+        }
+      });
     </script>
   </body>
 </html>
