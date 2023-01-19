@@ -45,7 +45,7 @@
       <img id="img-1"/>
       <img id="img-2"/>
     </div>
-    <div id="score">Score: 0</div>
+    <div id="score">Streak: 0</div>
     <div id="correct">Correct!</div>
     <div id="wrong">Wrong!</div>
     <script>
@@ -96,7 +96,7 @@
             lock = true;
             if (event.target === realImg && realSide === "left") {
                 scoreCounter++;
-                score.innerHTML = "Score: " + scoreCounter;
+                score.innerHTML = "Streak: " + scoreCounter;
                 body.style.backgroundColor = "green";
                 setTimeout(function() {
                     body.style.backgroundColor = "white";
@@ -105,7 +105,7 @@
                 }, 2000);
             } else if (event.target === realImg && realSide === "right") {
             scoreCounter++;
-            score.innerHTML = "Score: " + scoreCounter;
+            score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "green";
             setTimeout(function() {
                 body.style.backgroundColor = "white";
@@ -113,10 +113,8 @@
                 lock = false;
             }, 2000);
             } else {
-            if (scoreCounter >= 1) {
-                scoreCounter--;
-            }
-            score.innerHTML = "Score: " + scoreCounter;
+            scoreCounter = 0;
+            score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "red";
             setTimeout(function() {
                 body.style.backgroundColor = "white";
@@ -132,7 +130,7 @@
             lock = true;
             if (event.code === "ArrowLeft" && realSide === "left") {
                 scoreCounter++;
-                score.innerHTML = "Score: " + scoreCounter;
+                score.innerHTML = "Streak: " + scoreCounter;
                 body.style.backgroundColor = "green";
                 setTimeout(function() {
                     body.style.backgroundColor = "white";
@@ -141,7 +139,7 @@
                 }, 2000);
             } else if (event.code === "ArrowRight" && realSide === "right") {
             scoreCounter++;
-            score.innerHTML = "Score: " + scoreCounter;
+            score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "green";
             setTimeout(function() {
                 body.style.backgroundColor = "white";
@@ -149,10 +147,8 @@
                 lock = false;
             }, 2000);
             } else {
-            if (scoreCounter >= 1) {
-                scoreCounter--;
-            }
-            score.innerHTML = "Score: " + scoreCounter;
+            scoreCounter = 0;
+            score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "red";
             setTimeout(function() {
                 body.style.backgroundColor = "white";
