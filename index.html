@@ -62,14 +62,18 @@
     var correct = document.getElementById("correct");
     // Get the wrong answer element
     var wrong = document.getElementById("wrong");
-    
+    var randomNumber1
+    var randomNumber2
+    var realUrl
+    var fakeUrl
+    var randomNum
     //Function to get the random real and fake images
     function getImages() {
-        var randomNumber1 = ('00000' + Math.floor(Math.random() * 100)).slice(-5)
-        var randomNumber2 = ('00000' + Math.floor(Math.random() * 100)).slice(-5)
-        var realUrl = "real/" + randomNumber1 + ".jpeg";
-        var fakeUrl = "fake/" + randomNumber2 + ".jpeg";
-        var randomNum = Math.random();
+        randomNumber1 = ('00000' + Math.floor(Math.random() * 100)).slice(-5)
+        randomNumber2 = ('00000' + Math.floor(Math.random() * 100)).slice(-5)
+        realUrl = "real/" + randomNumber1 + ".jpeg";
+        fakeUrl = "fake/" + randomNumber2 + ".jpeg";
+        randomNum = Math.random();
         if (randomNum >= 0.5) {
             realImg = document.getElementById("img-1");
             realSide = "left";
@@ -99,7 +103,7 @@
                     getImages();
                     lock = false;
                 }, 2000);
-            } else if (event.target === fakeImg && realSide === "right") {
+            } else if (event.target === realImg && realSide === "right") {
             scoreCounter++;
             score.innerHTML = "Score: " + scoreCounter;
             body.style.backgroundColor = "green";
