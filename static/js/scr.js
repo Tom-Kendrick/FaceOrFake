@@ -18,10 +18,14 @@
     var randomNum
     //Function to get the random real and fake images
     function getImages() {
+        var category = window.location.href.split("faceorfake.com/")[1]
+        if (category === '') {
+            category = 'humans'
+        }
         randomNumber1 = ('00000' + Math.floor(Math.random() * 500)).slice(-5)
         randomNumber2 = ('00000' + Math.floor(Math.random() * 500)).slice(-5)
-        realUrl = "real/" + randomNumber1 + ".jpeg";
-        fakeUrl = "fake/" + randomNumber2 + ".jpeg";
+        realUrl = category + "/real/" + randomNumber1 + ".jpeg";
+        fakeUrl = category + "/fake/" + randomNumber2 + ".jpeg";
         randomNum = Math.random();
         if (randomNum >= 0.5) {
             realImg = document.getElementById("img-1");
