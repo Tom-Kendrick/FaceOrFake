@@ -118,22 +118,31 @@ body {
   
 .z-pos {
     z-index: -1;
+#blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
 }
-@media only screen and (min-width: 768px) {
-    #blob {
-        background-color: white;
-        height: 34vmax;
-        aspect-ratio: 1;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        translate: -50% -50%;
-        border-radius: 50%;
-        background: linear-gradient(to right, aquamarine, mediumpurple);
-        animation: rotate 20s infinite;
-        opacity: 0.8;
+
+@media (min-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+  }
+@media (min-width: 992px) {
+    .desktop-only {
+        display: block;
     }
 }
+
 
 #blur {
     height: 100%;
