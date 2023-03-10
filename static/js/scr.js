@@ -111,13 +111,12 @@
         }
     }
 });
-const blob = document.getElementById("potential-blob");
+const blob = document.getElementById("blob");
 
 
 window.onpointermove = event => { 
 const { clientX, clientY } = event;
 if (!/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    blob.id = "blob"
     blob.animate({
         left: `${clientX}px`,
         top: `${clientY}px`
