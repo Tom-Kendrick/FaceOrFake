@@ -1,19 +1,52 @@
-/* Style for the images */
-img {
-    padding-left: 4%;
-    padding-right: 4%;
-    width: 40%; /* half of the screen width */
-    height: auto; /* automatically adjust height */
+.parent {
+    position: relative;
+    text-align: center;
 }
+
+.main-img {
+    width: 40%;
+    max-height: 590px;
+    height: auto;
+    transition: transform 0.5s;
+    border-radius: 5%;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid white;
+    height: 80%;
+    transform: translateY(10%);
+}
+
+
+
+.main-img:hover{
+    transform:scale(1.05);
+}
+.wider {
+    max-width: 58.75px;
+    width: 4%;
+    height: auto;
+}
+
+.lightning {
+    position: absolute;
+    height: 500px;
+}
+
 /* Style for the score */
 #score {
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 70px;
     font-weight: bold;
 }
 /* Style for the correct answer */
 #correct {
     background-color: green;
-    color: white;
+    color: black;
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
@@ -22,7 +55,7 @@ img {
 /* Style for the wrong answer */
 #wrong {
     background-color: red;
-    color: white;
+    color: black;
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
@@ -56,8 +89,71 @@ nav {
 }
 
 
+.child {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body {
+    top: 20px;
+    background-color: black;
+    height: 100vh;
+    margin: 0rem;
+    overflow: hidden; 
+  }
+
+@keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+.z-pos {
+    z-index: -1;
+}
+@media only screen and (min-width: 768px) {
+    #blob {
+        background-color: white;
+        height: 34vmax;
+        aspect-ratio: 1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        border-radius: 50%;
+        background: linear-gradient(to right, aquamarine, mediumpurple);
+        animation: rotate 20s infinite;
+        opacity: 0.8;
+    }
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backdrop-filter: blur(12vmax);
+}
 
 
-h1 {text-align: center; font-size: 50px;}
-p {text-align: center; font-size: 25px;}
-div {text-align: center;}
+h1 {
+    text-align: center; font-size: 50px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+}
+p {
+    text-align: center; font-size: 25px;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+}
+div {
+    text-align: center;
+    color: white;
+}
