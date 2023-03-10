@@ -114,7 +114,7 @@
 const blob = document.getElementById("blob");
 
 
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+if (!/iPhone/i.test(navigator.userAgent)) {
     window.onpointermove = event => { 
     const { clientX, clientY } = event;
     
