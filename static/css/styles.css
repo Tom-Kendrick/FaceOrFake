@@ -118,6 +118,7 @@ body {
   
 .z-pos {
     z-index: -1;
+}
 #blob {
     background-color: white;
     height: 34vmax;
