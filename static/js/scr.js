@@ -116,10 +116,11 @@ const blob = document.getElementById("blob");
 
 window.onpointermove = event => { 
 const { clientX, clientY } = event;
-
-blob.animate({
-    left: `${clientX}px`,
-    top: `${clientY}px`
-}, { duration: 2000, fill: "forwards" });
+if (!/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    blob.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+    }, { duration: 2000, fill: "forwards" });
+    }
 }
 
