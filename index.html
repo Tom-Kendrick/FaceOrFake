@@ -1,20 +1,25 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
+  <div class="z-pos" id="blob"></div>
+  <div class="z-pos" id="blur"></div>
+  <head></head>
     <title>Face or Fake</title>
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <nav>
-      <a href="/" class="nav-link active">Humans</a>
-      <a href="/cats" class="nav-link">Cats</a>
-    </nav>    
-    <h1 >Face Or Fake</h1>
-    <p>One of the images below is created by AI, the other is a real human. Click who you think is real!</p>
-  </head>
+ 
+    <div style="height: 7px;"></div>
+    <h1>Face Or Fake</h1>
+    <p>Click who is real!</p>
   <body>
-    <div>
-      <img id="img-1"/>
-      <img id="img-2"/>
+    <div class="parent">
+      <div class="child wider"></div>
+      <img class="br child main-img" id="img-1"/>
+      <div class="child wider"></div>
+      <div class="vertical-line child"></div>
+      <div class="child wider"></div>
+      <img class="br child main-img" id="img-2"/>
+      <div class="child wider"></div>
     </div>
     <div id="score">Streak: 0</div>
     <script src="static/js/scr.js"></script>
