@@ -52,7 +52,7 @@
                 score.innerHTML = "Streak: " + scoreCounter;
                 body.style.backgroundColor = "green";
                 setTimeout(function() {
-                    body.style.backgroundColor = "white";
+                    body.style.backgroundColor = "black";
                     getImages();
                     lock = false;
                 }, 2000);
@@ -61,7 +61,7 @@
             score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "green";
             setTimeout(function() {
-                body.style.backgroundColor = "white";
+                body.style.backgroundColor = "black";
                 getImages();
                 lock = false;
             }, 2000);
@@ -70,7 +70,7 @@
             score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "red";
             setTimeout(function() {
-                body.style.backgroundColor = "white";
+                body.style.backgroundColor = "black";
                 getImages();
                 lock = false;
             }, 2000);
@@ -86,7 +86,7 @@
                 score.innerHTML = "Streak: " + scoreCounter;
                 body.style.backgroundColor = "green";
                 setTimeout(function() {
-                    body.style.backgroundColor = "white";
+                    body.style.backgroundColor = "black";
                     getImages();
                     lock = false;
                 }, 2000);
@@ -95,7 +95,7 @@
             score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "green";
             setTimeout(function() {
-                body.style.backgroundColor = "white";
+                body.style.backgroundColor = "black";
                 getImages();
                 lock = false;
             }, 2000);
@@ -104,10 +104,21 @@
             score.innerHTML = "Streak: " + scoreCounter;
             body.style.backgroundColor = "red";
             setTimeout(function() {
-                body.style.backgroundColor = "white";
+                body.style.backgroundColor = "black";
                 getImages();
                 lock = false;
             }, 2000);
         }
     }
 });
+
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 2000, fill: "forwards" });
+}
