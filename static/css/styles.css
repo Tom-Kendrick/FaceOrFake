@@ -5,6 +5,7 @@
 
 .main-img {
     width: 40%;
+    max-width: 590px;
     max-height: 590px;
     height: auto;
     transition: transform 0.5s;
